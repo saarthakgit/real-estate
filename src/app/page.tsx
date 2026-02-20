@@ -10,7 +10,7 @@ export default function Home() {
       <Hero/>
       <LeadForm/>
       <BrandMarquee/>
-      <h1>Irish</h1>
+      {/* <h1>Irish</h1> */}
     </div>
   )
 }

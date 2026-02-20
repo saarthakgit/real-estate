@@ -1,33 +1,52 @@
 'use client';
 import { Phone, Menu } from 'lucide-react';
+import Image from 'next/image';
 
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
-      {/* Brand */}
-      <div className="text-2xl font-serif text-white tracking-widest">
-        IRISH <span className="text-yellow-500">PLATINUM</span>
-      </div>
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+      <nav className="w-full max-w-6xl backdrop-blur-xl bg-black/40 border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+        
+        {/* LEFT: Logo & Brand */}
+        <div className="flex items-center gap-3">
+          <div className="relative w-8 h-8">
+            <Image 
+              src="/irish.png" 
+              alt="Irish Logo" 
+              fill 
+              className="object-contain"
+              priority
+            />
+          </div>
+          {/* Using font-primary + font-medium for a clean look */}
+          <div className="text-lg font-primary font-medium text-white tracking-[0.15em] hidden sm:block">
+            IRISH <span className="text-yellow-500 font-bold text-normal">PLATINUM</span>
+          </div>
+        </div>
 
-      {/* Desktop Links (Hidden on Mobile) */}
-      <div className="hidden md:flex gap-8 text-sm uppercase tracking-widest text-gray-300">
-        <a href="#overview" className="hover:text-white transition">Overview</a>
-        <a href="#amenities" className="hover:text-white transition">Amenities</a>
-        <a href="#location" className="hover:text-white transition">Location</a>
-      </div>
+        {/* CENTER: Navigation Links */}
+        {/* Using font-primary + font-light + extra tracking for elegance */}
+        <div className="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] text-gray-300 font-light font-primary">
+          <a href="#amenities" className="hover:text-yellow-500 transition-colors">Amenities</a>
+          <a href="#layout" className="hover:text-yellow-500 transition-colors">Layout</a>
+          <a href="#location" className="hover:text-yellow-500 transition-colors">Location</a>
+        </div>
 
-      {/* CTA Button */}
-      <div className="flex items-center gap-4">
-        <a 
-          href="tel:+919876543210" 
-          className="hidden md:flex items-center gap-2 px-5 py-2 bg-white text-black font-bold uppercase text-xs tracking-wider hover:bg-gray-200 transition"
-        >
-          <Phone size={14} /> Call Now
-        </a>
-        <button className="md:hidden text-white">
-          <Menu size={24} />
-        </button>
-      </div>
-    </nav>
+        {/* RIGHT: Pill CTA Button */}
+        <div className="flex items-center gap-2">
+          <a 
+            href="tel:+918920840946" 
+            className="flex items-center gap-2 px-6 py-2.5 bg-yellow-500 text-black font-bold font-primary uppercase text-[10px] tracking-widest rounded-full hover:bg-yellow-400 transition-all active:scale-95 shadow-lg shadow-yellow-500/20"
+          >
+            <Phone size={12} fill="currentColor" /> Call Now
+          </a>
+          
+          {/* Mobile Menu Toggle */}
+          <button className="md:hidden p-2 text-white">
+            <Menu size={20} />
+          </button>
+        </div>
+      </nav>
+    </div>
   );
 }

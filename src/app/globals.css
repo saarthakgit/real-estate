@@ -1,26 +1,22 @@
 @import "tailwindcss";
 
+/* 1. Ensure the theme block recognizes your variable */
+@theme {
+  --font-primary: var(--font-zalando);
+}
+
+/* 2. Set the global default without needing !important */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Use the variable you defined in layout.tsx */
+  --font-main: var(--font-zalando);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-main), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3. Fix that scroll error from earlier */
+html {
+  scroll-behavior: smooth;
 }

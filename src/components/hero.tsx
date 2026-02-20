@@ -4,58 +4,91 @@ import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative w-full h-screen md:min-h-200 flex items-center justify-center overflow-hidden">
+    <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black font-primary">
       
-      {/* 1. The Dynamic Background (Video) */}
+      {/* 1. Optimized Video Background */}
       <div className="absolute inset-0 z-0">
         <video 
-          autoPlay loop muted playsInline 
-          className="w-full h-full object-cover opacity-60"
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          poster="/video-placeholder.jpg" // High-quality image shown while video loads
+          className="w-full h-full object-cover opacity-50 transition-opacity duration-1000"
         >
-          {/* Replace with your actual drone footage later */}
-          <source src="/assets/hero-drone.mp4" type="video/mp4" />
+          {/* Use the public folder path directly */}
+          <source src="/hero-drone.mp4" type="video/mp4" />
         </video>
-        {/* Dark Overlay so text is readable */}
-        <div className="absolute inset-0 bg-black/60" />
+        {/* Cinematic Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
       </div>
 
-      {/* 2. The Container (Holds Text Left + Form Right) */}
-      <div className="relative z-10 container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+      {/* 2. Content Container */}
+      <div className="relative z-10 container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center h-full pt-20">
         
-        {/* LEFT: The Text & Hook */}
-        <div className="text-white space-y-6 text-center md:text-left pt-20 md:pt-0">
+        {/* LEFT: Branding & Hook */}
+        <div className="text-white space-y-4 text-center lg:text-left">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            className="inline-block px-3 py-1 border border-yellow-500/50 rounded-full text-yellow-400 text-xs tracking-widest uppercase mb-2"
+            initial={{ opacity: 0, x: -20 }} 
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2 }}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-yellow-500 text-[10px] tracking-[0.4em] uppercase font-semibold"
           >
-            RERA: UPRERAPRJ123456
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-yellow-500"></span>
+            </span>
+            RERA: UPRERAPRJ503189/03/2024
           </motion.div>
           
-          <h1 className="text-5xl md:text-7xl font-serif leading-tight">
-            The Crown Jewel of <br />
-            <span className="text-transparent bg-clip-text bg-linear-to-r from-yellow-200 to-yellow-600">
-              Greater Noida
-            </span>
-          </h1>
-          
-          <p className="text-gray-300 text-lg md:max-w-md">
-            3/4 BHK Luxury Residences starting @ ₹1.8 Cr*. 
-            <br/> <span className="text-sm text-gray-500">*Limited inventory available.</span>
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-6xl md:text-8xl font-black uppercase tracking-wider leading-[0.9]">
+              IRISH <br />
+              <span className="text-yellow-500 font-extralight tracking-wide">PLATINUM</span>
+            </h1>
+            
+            <p className="mt-6 text-gray-400 text-sm md:text-base tracking-[0.2em] uppercase max-w-md mx-auto lg:mx-0 font-light leading-relaxed">
+              Ultra-Luxury 3 & 4 BHK Residences <br />
+              Starting @ ₹1.63 Cr* in Greater Noida
+            </p>
+          </motion.div>
+
+          <motion.div 
+             initial={{ opacity: 0 }} 
+             animate={{ opacity: 1 }} 
+             transition={{ delay: 1 }}
+             className="pt-4 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start"
+          >
+             <div className="px-6 py-2 border-l-2 border-yellow-500 bg-white/5 backdrop-blur-sm">
+                <p className="text-[10px] text-gray-500 uppercase tracking-widest">Expected Possession</p>
+                <p className="text-sm font-bold text-white tracking-widest uppercase">Mid 2028</p>
+             </div>
+          </motion.div>
         </div>
 
-        {/* RIGHT: The Floating Form */}
-        <div className="hidden md:block">
-           <LeadForm />
-        </div>
+        {/* RIGHT: Desktop Form */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="hidden lg:block"
+        >
+          <LeadForm />
+        </motion.div>
       </div>
 
-      {/* MOBILE ONLY: Form appears below hero on phones */}
-      <div className="md:hidden w-full px-4 absolute bottom-8 z-20">
-         <button className="w-full bg-yellow-500 text-black font-bold py-4 rounded-lg shadow-xl animate-pulse">
-            Enquire Now (Prices Rising Soon)
-         </button>
+      {/* MOBILE: Pulse CTA (Anchored or Section-end) */}
+      <div className="lg:hidden absolute bottom-12 w-full px-6 z-20">
+         <motion.button 
+           whileTap={{ scale: 0.95 }}
+           className="w-full bg-yellow-500 text-black font-black uppercase tracking-[0.2em] text-xs py-5 rounded-full shadow-2xl shadow-yellow-500/20"
+         >
+           View Floor Plans
+         </motion.button>
       </div>
 
     </section>
