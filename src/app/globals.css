@@ -18,8 +18,8 @@
 @layer base {
   /* 1. Make the standard Tailwind container wider to compensate for 70% scale */
   .container {
-    max-width: 143% !important; /* 100 / 0.7 */
-    width: 95vw; /* Keeps some breathing room on the edges */
+    max-width: 166% !important; /* 100 / 0.7 */
+    width: 90vw; /* Keeps some breathing room on the edges */
     margin-left: auto;
     margin-right: auto;
   }
@@ -47,7 +47,7 @@
 :root {
   /* Use the variable you defined in layout.tsx */
   --font-main: var(--font-zalando);
-  font-size: 70%;
+  font-size: 60%;
 }
 
 body {
