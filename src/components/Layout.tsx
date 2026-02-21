@@ -21,22 +21,24 @@ export default function FloorPlanSection() {
   const isSingleCard = filteredPlans.length === 1;
 
   return (
-    <section id="layout" className="bg-black py-12 md:py-16 px-4 font-primary overflow-hidden relative min-h-screen flex flex-col justify-center">
-      <div className="max-w-[1100px] mx-auto w-full">
+    <section id="layout" className="bg-black py-20 md:py-24 px-4 font-primary overflow-hidden relative min-h-screen flex flex-col justify-center">
+      <div className="max-w-[1200px] mx-auto w-full"> {/* Widened container slightly */}
         
         {/* Header Area */}
-        <div className="flex flex-col items-center text-center mb-10 md:mb-14">
-          <h3 className="text-3xl md:text-5xl font-black text-white uppercase tracking-tighter mb-6 whitespace-nowrap">
+        <div className="flex flex-col items-center text-center mb-16 md:mb-20">
+          {/* MASSIVE HEADER: 5xl Mobile / 7xl Desktop */}
+          <h3 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter mb-10 whitespace-nowrap">
             Layout <span className="text-gray-600 font-extralight italic">Plans</span>
           </h3>
           
-          <div className="flex bg-neutral-900/50 p-1 rounded-full border border-white/5 backdrop-blur-xl z-10 scale-90 md:scale-100">
+          <div className="flex bg-neutral-900/50 p-1.5 rounded-full border border-white/5 backdrop-blur-xl z-10">
             {['Site Plan', '3 BHK', '4 BHK'].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-6 md:px-8 py-2 rounded-full text-[8px] md:text-[9px] tracking-[0.2em] md:tracking-[0.3em] uppercase transition-all duration-500 whitespace-nowrap ${
-                  activeTab === tab ? 'bg-yellow-500 text-black font-bold' : 'text-gray-500 hover:text-white'
+                /* LARGER TABS: text-xs Mobile / text-sm Desktop */
+                className={`px-8 md:px-10 py-3 rounded-full text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap font-bold ${
+                  activeTab === tab ? 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)]' : 'text-gray-500 hover:text-white'
                 }`}
               >
                 {tab}
@@ -46,7 +48,7 @@ export default function FloorPlanSection() {
         </div>
 
         {/* The Grid / Track */}
-        <div className={`flex gap-4 md:gap-6 pb-6 no-scrollbar snap-x snap-mandatory overflow-x-auto ${isSingleCard ? 'justify-center' : 'justify-start lg:justify-center'}`}>
+        <div className={`flex gap-8 md:gap-10 pb-10 no-scrollbar snap-x snap-mandatory overflow-x-auto ${isSingleCard ? 'justify-center' : 'justify-start lg:justify-center'}`}>
        
           <AnimatePresence mode='wait'>
             {filteredPlans.map((plan) => (
@@ -56,37 +58,41 @@ export default function FloorPlanSection() {
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.98 }}
-                // Reduced desktop width to 310px to fit 3-across easily on laptops
-                className={`flex-shrink-0 snap-center bg-neutral-900/20 border border-white/5 rounded-[24px] overflow-hidden ${isSingleCard ? 'w-[85vw] md:w-[400px]' : 'w-[80vw] md:w-[310px]'}`}
+                /* WIDER CARDS: 360px Desktop to fit the larger text */
+                className={`flex-shrink-0 snap-center bg-neutral-900/20 border border-white/5 rounded-[32px] overflow-hidden ${isSingleCard ? 'w-[90vw] md:w-[450px]' : 'w-[85vw] md:w-[360px]'}`}
               >
-                {/* 1:1 SQUARE IMAGE CONTAINER */}
+                {/* IMAGE CONTAINER */}
                 <div className="aspect-square bg-neutral-800/50 relative border-b border-white/5">
                    <img 
                      src={plan.img} 
                      alt={plan.title} 
-                     className="w-full h-full object-contain p-4 md:p-6" 
+                     className="w-full h-full object-contain p-6 md:p-8 hover:scale-105 transition-transform duration-700" 
                    />
                 </div>
                 
-                {/* Compressed Content Area */}
-                <div className="p-5 md:p-6 text-center">
-                  <h4 className="text-base md:text-lg font-bold text-white mb-0.5 uppercase tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                {/* Content Area */}
+                <div className="p-8 text-center">
+                  {/* LARGER TITLE: 2xl Mobile / 3xl Desktop */}
+                  <h4 className="text-2xl md:text-3xl font-black text-white mb-2 uppercase tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">
                     {plan.title}
                   </h4>
-                  <p className="text-gray-500 text-[8px] md:text-[9px] tracking-[0.15em] uppercase mb-5 font-light">
+                  
+                  {/* LARGER SUBTITLE: xs Mobile / sm Desktop */}
+                  <p className="text-gray-400 text-xs md:text-sm tracking-[0.2em] uppercase mb-8 font-medium">
                     {plan.size}
                   </p>
                   
-                  <div className="flex gap-2">
+                  <div className="flex gap-4">
                     <button 
                       onClick={() => setModalOpen(true)} 
-                      className="flex-1 py-2.5 border border-white/10 text-white text-[7px] md:text-[8px] tracking-[0.2em] uppercase rounded-md hover:bg-white/5 transition-all"
+                      /* BIGGER BUTTONS: text-[10px] Mobile / text-xs Desktop */
+                      className="flex-1 py-4 border border-white/10 text-white text-[10px] md:text-xs tracking-[0.2em] font-bold uppercase rounded-xl hover:bg-white/10 transition-all"
                     >
                       Details
                     </button>
                     <button 
                       onClick={() => { setSelectedPlan(`${plan.category} - ${plan.size.split(' ')[0]}`); setModalOpen(true); }} 
-                      className="flex-1 py-2.5 bg-yellow-500 text-black font-black text-[7px] md:text-[8px] tracking-[0.2em] uppercase rounded-md hover:bg-yellow-400 transition-all"
+                      className="flex-1 py-4 bg-yellow-500 text-black font-black text-[10px] md:text-xs tracking-[0.2em] uppercase rounded-xl hover:bg-yellow-400 shadow-[0_0_20px_rgba(234,179,8,0.2)] hover:shadow-[0_0_30px_rgba(234,179,8,0.4)] transition-all"
                     >
                       Interested
                     </button>
@@ -98,8 +104,6 @@ export default function FloorPlanSection() {
         </div>
       </div>
 
-      
-
       {/* Modal Overlay */}
       <AnimatePresence>
         {isModalOpen && (
@@ -108,7 +112,7 @@ export default function FloorPlanSection() {
             className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-2xl"
           >
             <motion.div initial={{ scale: 0.96 }} animate={{ scale: 1 }} className="relative w-full max-w-sm">
-              <button onClick={() => setModalOpen(false)} className="absolute -top-8 right-0 text-white/40 text-[9px] uppercase tracking-widest hover:text-white">Close ×</button>
+              <button onClick={() => setModalOpen(false)} className="absolute -top-12 right-0 text-white/60 text-sm uppercase tracking-widest hover:text-white transition-colors">Close ×</button>
               <LeadForm preSelect={selectedPlan} />
             </motion.div>
           </motion.div>
