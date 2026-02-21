@@ -88,6 +88,15 @@ export default function Footer() {
               Back to Top ↑
             </button>
           </div>
+          <div className="flex gap-4 mt-2 md:mt-0">
+  <a href="/privacy" className="text-[9px] text-gray-600 hover:text-white uppercase tracking-widest transition-colors">
+    Privacy Policy
+  </a>
+  <span className="text-gray-800">|</span>
+  <a href="#" className="text-[9px] text-gray-600 hover:text-white uppercase tracking-widest transition-colors">
+    Terms of Use
+  </a>
+</div>
         </div>
       </div>
     </footer>
