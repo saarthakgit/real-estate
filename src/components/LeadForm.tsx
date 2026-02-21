@@ -1,18 +1,30 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Loader2, CheckCircle2, AlertCircle, ChevronDown } from 'lucide-react';
 
-export default function LeadForm() {
-  // Added 'size' to the state
-  const [formData, setFormData] = useState({ name: '', phone: '', message: '', size: '' });
+export default function LeadForm({ preSelect = "" }: { preSelect?: string }) {
+  // Consolidate 'plan' and 'size' into just 'size' to match your <select> value
+  const [formData, setFormData] = useState({ 
+    name: '', 
+    phone: '', 
+    message: '', 
+    size: preSelect || '' // Initialize with preSelect if available
+  });
+  
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  // Trigger when the user clicks 'Interested' on a card
+  useEffect(() => {
+    if (preSelect) {
+      setFormData(prev => ({ ...prev, size: preSelect }));
+    }
+  }, [preSelect]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus('loading');
     
-    // Clean phone for the WhatsApp link and Dial link
     const cleanPhone = formData.phone.replace(/\D/g, '');
     
     try {
@@ -21,16 +33,17 @@ export default function LeadForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: formData.name.trim(),
-          phone: `[+91${cleanPhone}](tel:+91${cleanPhone})`, // Clickable link in TG text
+          phone: `[+91${cleanPhone}](tel:+91${cleanPhone})`,
           message: formData.message,
-          size: formData.size, // New field sent to backend
-          wtspnum: cleanPhone // Raw digits for the WhatsApp button URL
+          size: formData.size, // This now matches the state key
+          wtspnum: cleanPhone
         }),
       });
 
       if (res.ok) {
         setStatus('success');
-        setFormData({ name: '', phone: '', message: '', size: '' }); 
+        // Reset form but keep the last selected plan as a fallback
+        setFormData({ name: '', phone: '', message: '', size: preSelect || '' }); 
       } else {
         setStatus('error');
       }
@@ -40,7 +53,7 @@ export default function LeadForm() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto ">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -49,7 +62,7 @@ export default function LeadForm() {
         <div className="absolute -top-20 -right-20 w-40 h-40 bg-yellow-500/20 blur-3xl rounded-full pointer-events-none" />
         
         <div className="relative z-10">
-          <h3 className="text-2xl font-serif text-white mb-2">Request Pricing</h3>
+          <h3 className="text-2xl font-serif text-white mb-2 font-primary font-black uppercase tracking-tight">Request Pricing</h3>
           <p className="text-gray-400 text-sm mb-6">Get the brochure & cost sheet on WhatsApp.</p>
 
           <AnimatePresence mode='wait'>
@@ -57,12 +70,12 @@ export default function LeadForm() {
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col items-center justify-center py-8 text-center"
+                className="flex flex-col items-center justify-center py-8 text-center font-primary"
               >
                 <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mb-4">
                   <CheckCircle2 className="w-8 h-8 text-green-500" />
                 </div>
-                <h4 className="text-xl font-bold text-white">Request Received!</h4>
+                <h4 className="text-xl font-bold text-white uppercase tracking-tight">Request Received!</h4>
                 <p className="text-gray-400 text-sm mt-2">Our team will call you shortly.</p>
                 <button 
                   onClick={() => setStatus('idle')}
@@ -72,8 +85,7 @@ export default function LeadForm() {
                 </button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {/* Name Field - Required */}
+              <form onSubmit={handleSubmit} className="space-y-4 font-primary">
                 <div>
                   <input
                     type="text"
@@ -85,7 +97,6 @@ export default function LeadForm() {
                   />
                 </div>
 
-                {/* Phone Field - Required */}
                 <div>
                   <input
                     type="tel"
@@ -99,10 +110,10 @@ export default function LeadForm() {
                   />
                 </div>
 
-                {/* Size Selection - Required Dropdown */}
+                {/* CONSISTENT KEY: formData.size */}
                 <div className="relative">
                   <select
-                    
+                    required
                     className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-yellow-500/50 focus:bg-white/10 transition-all appearance-none cursor-pointer"
                     value={formData.size}
                     onChange={(e) => setFormData({ ...formData, size: e.target.value })}
@@ -117,7 +128,6 @@ export default function LeadForm() {
                   <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none w-4 h-4" />
                 </div>
 
-                {/* Message Field */}
                 <div>
                   <textarea
                     placeholder="Any specific requirement? (Optional)"
@@ -128,11 +138,10 @@ export default function LeadForm() {
                   />
                 </div>
 
-                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={status === 'loading'}
-                  className="w-full bg-linear-to-r from-yellow-600 to-yellow-500 text-black font-bold uppercase tracking-widest py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                  className="w-full bg-gradient-to-r from-yellow-600 to-yellow-500 text-black font-black uppercase tracking-widest py-4 rounded-lg hover:brightness-110 active:scale-[0.98] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                 >
                   {status === 'loading' ? (
                     <>

@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function Navbar() {
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-      <nav className="w-full max-w-6xl backdrop-blur-xl bg-black/40 border border-white/10 rounded-full px-6 py-3 flex items-center justify-between shadow-2xl">
+      <nav className="w-full max-w-6xl backdrop-blur-xl bg-black/60 border border-yellow-500/30 rounded-full px-6 py-3 flex items-center justify-between shadow-[0_0_20px_rgba(234,179,8,0.15)] transition-all duration-500">
         
         {/* LEFT: Logo & Brand */}
         <div className="flex items-center gap-3">
@@ -18,31 +18,28 @@ export default function Navbar() {
               priority
             />
           </div>
-          {/* Using font-primary + font-medium for a clean look */}
-          <div className="text-lg font-primary font-medium text-white tracking-[0.15em] hidden sm:block">
-            IRISH <span className="text-yellow-500 font-bold text-normal">PLATINUM</span>
+          <div className="text-lg font-primary font-medium text-white tracking-[0.15em] hidden sm:block uppercase">
+            Irish <span className="text-yellow-500 font-black">Platinum</span>
           </div>
         </div>
 
         {/* CENTER: Navigation Links */}
-        {/* Using font-primary + font-light + extra tracking for elegance */}
         <div className="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] text-gray-300 font-light font-primary">
-          <a href="#amenities" className="hover:text-yellow-500 transition-colors">Amenities</a>
-          <a href="#layout" className="hover:text-yellow-500 transition-colors">Layout</a>
-          <a href="#location" className="hover:text-yellow-500 transition-colors">Location</a>
+          <a href="#amenities" className="hover:text-yellow-500 transition-all hover:tracking-[0.4em]">Amenities</a>
+          <a href="#layout" className="hover:text-yellow-500 transition-all hover:tracking-[0.4em]">Layout</a>
+          <a href="#paymentplan" className="hover:text-yellow-500 transition-all hover:tracking-[0.4em]">Payment Plan</a>
         </div>
 
         {/* RIGHT: Pill CTA Button */}
         <div className="flex items-center gap-2">
           <a 
             href="tel:+918920840946" 
-            className="flex items-center gap-2 px-6 py-2.5 bg-yellow-500 text-black font-bold font-primary uppercase text-[10px] tracking-widest rounded-full hover:bg-yellow-400 transition-all active:scale-95 shadow-lg shadow-yellow-500/20"
+            className="flex items-center gap-2 px-6 py-2.5 bg-yellow-500 text-black font-black font-primary uppercase text-[10px] tracking-[0.2em] rounded-full hover:bg-yellow-400 hover:shadow-[0_0_25px_rgba(234,179,8,0.4)] transition-all active:scale-95 shadow-lg"
           >
             <Phone size={12} fill="currentColor" /> Call Now
           </a>
           
-          {/* Mobile Menu Toggle */}
-          <button className="md:hidden p-2 text-white">
+          <button className="md:hidden p-2 text-white hover:text-yellow-500 transition-colors">
             <Menu size={20} />
           </button>
         </div>

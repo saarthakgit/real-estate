@@ -3,20 +3,69 @@
 /* 1. Ensure the theme block recognizes your variable */
 @theme {
   --font-primary: var(--font-zalando);
+  --color-brand-gold: #EAB308;
+  /* Link the utility class to the keyframes defined below */
+  --animation-scroll: scroll 30s linear infinite;
+  --animation-scroll-reverse: scroll-reverse 30s linear infinite;
 }
-
+.animate-scroll {
+  display: flex;
+  width: max-content;
+  animation: scroll 40s linear infinite;
+  will-change: transform; /* Performance boost for 60% scale */
+}
+.animate-scroll-reverse { animation: var(--animation-scroll-reverse); }
+@layer base {
+  /* 1. Make the standard Tailwind container wider to compensate for 70% scale */
+  .container {
+    max-width: 166.67% !important; /* 100 / 0.7 */
+    width: 90vw; /* Keeps some breathing room on the edges */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  ::-webkit-scrollbar {
+    display: none;
+  }
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes scroll-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+  /* 2. Adjust your specific Navbar max-width if you used max-w-6xl */
+  .max-w-6xl {
+    max-width: 95vw !important; /* Forces it to a larger breakpoint */
+  }
+}
 /* 2. Set the global default without needing !important */
 :root {
   /* Use the variable you defined in layout.tsx */
   --font-main: var(--font-zalando);
+  font-size: 60%;
 }
 
 body {
   font-family: var(--font-main), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
+  background-color: black;
+  color: white;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Prevents unwanted horizontal scrolling */
+  /* -webkit-font-smoothing: antialiased; */
+  overflow-y: scroll; 
+    overflow-x: hidden;   
 }
 
 /* 3. Fix that scroll error from earlier */
 html {
   scroll-behavior: smooth;
+  -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;
 }
