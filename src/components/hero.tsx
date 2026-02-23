@@ -7,7 +7,7 @@ export default function Hero() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black font-primary">
       
       {/* 1. Optimized Video Background */}
-      <div className="absolute inset-0 z-0">
+<div className="absolute inset-0 z-0">
   <video 
     autoPlay 
     loop 
@@ -15,15 +15,15 @@ export default function Hero() {
     poster='/image.png'
     playsInline 
     preload="auto"
-    className="w-full h-full object-cover opacity-50 transition-opacity duration-1000"
+    className="w-full h-full object-cover opacity-50 transition-opacity duration-1000 bg-[url('/image.png')] bg-cover bg-center bg-no-repeat"
   >
-    {/* Ensure video.mp4 is sitting directly in your /public folder */}
+    {/* Ensure video1.mp4 is sitting directly in your /public folder */}
     <source src="/video1.mp4" type="video/mp4" />
     Your browser does not support the video tag.
   </video>
   
   {/* Cinematic Gradient Overlay */}
-  <div className="absolute inset-0 bg-linear-to-b from-black/80 via-transparent to-black" />
+  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
 </div>
 
    
