@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+
+
 /* 1. Ensure the theme block recognizes your variable */
 @theme {
   --font-primary: var(--font-zalando);
@@ -68,4 +70,9 @@ html {
   scroll-behavior: smooth;
   -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
+    /* font-size: 18px; */
+}
+:root {
+  /* Bump the base REM value so 1rem = 18px instead of 16px */
+  font-size: 15px; 
 }

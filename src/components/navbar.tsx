@@ -33,7 +33,7 @@ export default function Navbar() {
 
           {/* CENTER: Desktop Navigation Links */}
           <div className="hidden md:flex gap-8 text-[10px] uppercase tracking-[0.3em] text-gray-300 font-light font-primary">
-            {['Amenities', 'Layout', 'Payment Plan'].map((item) => (
+            {['amenities', 'layout', 'paymentplan'].map((item) => (
               <a 
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '')}`} 
@@ -75,7 +75,7 @@ export default function Navbar() {
               className="absolute top-20 left-4 right-4 bg-black/90 backdrop-blur-3xl border border-yellow-500/20 rounded-[2rem] p-8 shadow-2xl md:hidden overflow-hidden"
             >
               <div className="flex flex-col items-center gap-6 font-primary">
-                {['Amenities', 'Layout', 'Payment Plan'].map((item) => (
+                {['amenities', 'layout', 'paymentplan'].map((item) => (
                   <a
                     key={item}
                     href={`#${item.toLowerCase().replace(' ', '')}`}

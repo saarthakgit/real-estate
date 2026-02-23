@@ -21,13 +21,13 @@ export default function FloorPlanSection() {
   const isSingleCard = filteredPlans.length === 1;
 
   return (
-    <section id="layout" className="bg-black py-20 md:py-24 px-4 font-primary overflow-hidden relative min-h-screen flex flex-col justify-center">
+    <section id="layout" className="bg-black py-5 md:py-5 px-4 font-primary overflow-hidden relative min-h-screen flex flex-col justify-center">
       <div className="max-w-[1200px] mx-auto w-full"> {/* Widened container slightly */}
         
         {/* Header Area */}
         <div className="flex flex-col items-center text-center mb-16 md:mb-20">
           {/* MASSIVE HEADER: 5xl Mobile / 7xl Desktop */}
-          <h3 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter mb-10 whitespace-nowrap">
+          <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter mb-10 whitespace-nowrap">
             Layout <span className="text-gray-600 font-extralight italic">Plans</span>
           </h3>
           
@@ -37,7 +37,7 @@ export default function FloorPlanSection() {
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 /* LARGER TABS: text-xs Mobile / text-sm Desktop */
-                className={`px-8 md:px-10 py-3 rounded-full text-xs md:text-sm tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap font-bold ${
+                className={`px-8 md:px-10 py-3 rounded-full text-sm md:text-m tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap font-bold ${
                   activeTab === tab ? 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)]' : 'text-gray-500 hover:text-white'
                 }`}
               >

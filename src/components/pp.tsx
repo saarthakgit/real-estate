@@ -42,27 +42,27 @@ export default function PaymentSection() {
   const [isModalOpen, setModalOpen] = useState(false);
 
   return (
-    <section id="paymentplan" className="bg-black py-20 md:py-28 px-4 font-primary overflow-hidden relative">
+    <section id="paymentplan" className="bg-black md:py-5 px-4 font-primary overflow-hidden relative">
       <div className="max-w-[1200px] mx-auto flex flex-col items-center">
         
         {/* Header & Tabs */}
         <div className="flex flex-col items-center text-center mb-16 w-full">
           {/* Increased Eyebrow */}
-          <h3 className="text-yellow-500 text-xs md:text-sm tracking-[0.6em] uppercase font-bold mb-6">
+          <h3 className="text-yellow-500 text-xs md:text-sm tracking-[0.3em] uppercase font-bold mb-6">
             Investment Transparency
           </h3>
           {/* MASSIVE TITLE */}
-          <h4 className="text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-12">
+          <h4 className="text-4xl md:text-4xl font-black text-white uppercase tracking-tighter leading-none mb-12">
             Payment <span className="text-gray-600 font-extralight italic">Plans</span>
           </h4>
           
-          <div className="flex bg-neutral-900/50 p-1.5 rounded-full border border-white/5 backdrop-blur-xl w-full max-w-fit overflow-x-auto no-scrollbar">
+          <div className="flex bg-neutral-900/50 p-1.5 rounded-full border border-white/5 backdrop-blur-xl w-full max-w-fit overflow-x-auto scrollbar">
             {Object.keys(plans).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
                 /* Increased Tab Text */
-                className={`px-6 md:px-8 py-3 rounded-full text-[10px] md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap font-bold ${
+                className={`px-6 md:px-8 py-3 rounded-full text-sm md:text-xs tracking-[0.1em] md:tracking-[0.2em] uppercase transition-all duration-500 whitespace-nowrap font-bold ${
                   activeTab === tab ? 'bg-yellow-500 text-black shadow-[0_0_20px_rgba(234,179,8,0.3)]' : 'text-gray-500 hover:text-white'
                 }`}
               >
@@ -85,27 +85,37 @@ export default function PaymentSection() {
                 className="space-y-3 w-full max-w-[95vw] md:max-w-none"
               >
                 {plans[activeTab as keyof typeof plans].map((item, i) => (
-                  <div key={i} className="flex items-center justify-between p-5 md:p-6 bg-neutral-900/20 border border-white/5 rounded-2xl group hover:border-yellow-500/20 transition-all">
-                    <div className="flex items-center gap-5">
-                      <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-all shrink-0">
-                        <Check className="w-4 h-4" />
-                      </div>
-                      <div className="min-w-0 text-left">
-                        {/* Increased Stage Text */}
-                        <p className="text-white text-xs md:text-base uppercase tracking-widest font-bold truncate mb-1">
-                          {item.stage}
-                        </p>
-                        {/* Increased Desc Text */}
-                        <p className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider truncate font-medium">
-                          {item.desc}
-                        </p>
-                      </div>
-                    </div>
-                    {/* MASSIVE PERCENTAGE VALUE */}
-                    <span className="text-xl md:text-3xl font-black text-white tracking-tighter shrink-0 ml-6 group-hover:text-yellow-500 transition-colors">
-                      {item.value}
-                    </span>
-                  </div>
+                <div key={i} className="flex items-center justify-between w-full p-5 md:p-6 bg-neutral-900/20 border border-white/5 rounded-2xl group hover:border-yellow-500/20 transition-all">
+  
+  {/* LEFT GROUP: Icon + Text */}
+  <div className="flex items-center gap-5 flex-1">
+    
+    {/* Icon: Added 'shrink-0' so it never squishes */}
+    <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-yellow-500 group-hover:bg-yellow-500 group-hover:text-black transition-all shrink-0">
+      <Check className="w-4 h-4" />
+    </div>
+
+    {/* Text Content */}
+    <div className="flex-1 min-w-0 text-left">
+      
+      {/* Stage Name: Removed 'truncate', added 'whitespace-normal' */}
+      <p className="text-white text-sm md:text-base uppercase tracking-widest font-bold mb-1 whitespace-normal leading-snug">
+        {item.stage}
+      </p>
+      
+      {/* Description: Also allows wrapping now */}
+      <p className="text-gray-500 text-[10px] md:text-xs uppercase tracking-wider font-medium whitespace-normal leading-snug">
+        {item.desc}
+      </p>
+    </div>
+  </div>
+
+  {/* RIGHT SIDE: Percentage */}
+  <span className="text-xl md:text-3xl font-black text-white tracking-tighter shrink-0 ml-6 group-hover:text-yellow-500 transition-colors">
+    {item.value}
+  </span>
+
+</div>
                 ))}
               </motion.div>
             </AnimatePresence>

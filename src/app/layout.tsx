@@ -49,66 +49,73 @@ const zalandoSans = localFont({
   variable: '--font-zalando',
 });
 
+
 export const metadata: Metadata = {
-  // 1. Precise Title for High-Intent Search
+  // 1. Base URL for resolving all relative image links (Fixes the "localhost" warning)
+  metadataBase: new URL('https://platinumirish.in'), 
+
+  // 2. Precise Title for High-Intent Search
   title: "Irish Platinum Sector 10 | Luxury 3 & 4 BHK in Greater Noida West",
   
-  // 2. AI-Snippet Optimized Description
+  // 3. AI-Snippet Optimized Description
   description: "Official project details for Irish Platinum, Sector 10. Low-density 3 BHK & 4 BHK apartments in Greater Noida West. Mivan construction, 5 mins from Metro, & RERA approved (UPRERAPRJ503189). Starting ₹1.63 Cr*.",
   
-  // 3. Long-tail Keywords for SEO Ranking
+  // 4. Cleaned & De-duplicated Keywords
   keywords: [
     "Irish Platinum Sector 10",
     "Irish Platinum Noida Extension",
     "Irish Platinum price list download",
     "Irish Platinum layout",
-    "Property in noida extension",
-    "Property in greater noida",
-    "Property near me",
-    "Property near greater noida",
-    "Property near me greater noida",
-    "Ace Hanei",
-    "Flats in noida",
-    "3bhk Flats in noida",
-    "4bhk Flats in greater noida",
-    "Property near jewar airport",
     "3 BHK in Noida Extension",
     "4 BHK Luxury Apartments Greater Noida West",
-    "Irish Platinum Price List",
+    "Property in Greater Noida West",
+    "Flats near Jewar Airport",
+    "Ace Hanei",
     "Mivan Construction Projects Noida",
-    "Property near Jewar Airport",
     "Irish Group new project",
-    "RERA UPRERAPRJ503189"
+    "RERA UPRERAPRJ503189",
+    "Luxury flats in Noida",
+    "Property near metro station noida extension",
+    "best property in noida extension",
+    "property for investment in noida extension",
+    "irish project",
+    "irish group project",
+    "irish group new project",
+    "platinum irish",
+    "irish platinum society",
+    "irish official website",
+    "irish platinum official website",
+    "irish platinum official"
   ],
 
-  // 4. Open Graph for WhatsApp/Telegram Previews
+  // 5. Open Graph (WhatsApp/Telegram/LinkedIn)
   openGraph: {
     title: "Irish Platinum | The Treasure Chest of Living",
     description: "Premium 3/4 BHK residences in Sector 10. Mivan Tech & Low Density. Download Price List.",
-    url: "https://www.platinumirish.in", 
+    url: "https://platinumirish.in", 
     siteName: "Irish Platinum",
     images: [
       {
-        url: "/irish.png", // Ensure this image exists in your public folder
+        url: "/og-image.png", // Make sure this is a 1200x630px building render in your public folder
         width: 1200,
         height: 630,
-        alt: "Irish Platinum Facade Render",
+        alt: "Irish Platinum Luxury Apartments Sector 10",
       },
     ],
     locale: "en_IN",
     type: "website",
   },
 
-  // 5. Twitter Card for Social Sharing
+  // 6. Twitter Card (X) - Consolidated and Fixed
   twitter: {
     card: "summary_large_image",
     title: "Irish Platinum | 3 & 4 BHK Luxury",
     description: "Low density, Mivan construction, 5 mins from Metro. Check availability now.",
-    creator: "@heyisomer",
-    images: ["/isomer.jpg"],
+    creator: "@heyisomer", // Credits you
+    images: ["/og-image.png"], // Shows the building (High CTR), not a profile pic
   },
 
-  // 6. Bot Indexing Rules
+  // 7. Bot Indexing Rules - Consolidated
   robots: {
     index: true,
     follow: true,
@@ -133,7 +140,7 @@ export default function RootLayout({
         <style>{`
   body { 
     font-family: var(--font-zalando) !important;
-    zoom : 0.97
+    zoom : 0.9
   }
 `}</style>
       </head>

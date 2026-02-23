@@ -48,11 +48,11 @@ export default function FeatureNarrative() {
         className="max-w-4xl mx-auto text-center space-y-12 relative z-10"
       >
         {/* Header Section */}
-        <motion.div variants={itemVariants} className="space-y-4">
-          <h2 className="text-yellow-500 text-xs tracking-[0.6em] uppercase font-semibold">
+        <motion.div variants={itemVariants} className="space-y-3">
+          <h2 className="text-yellow-500 text-xs tracking-[0.2em] uppercase font-semibold">
             The Treasue Chest of Living
           </h2>
-          <h1 className="text-4xl md:text-6xl font-black text-white leading-tight uppercase tracking-tighter">
+          <h1 className="text-4xl md:text-5xl font-black text-white leading-tight uppercase tracking-tighter">
             WHERE LEGACY MEETS <br /> 
             <span className="font-extralight text-gray-400">MODERN PRECISION</span>
           </h1>

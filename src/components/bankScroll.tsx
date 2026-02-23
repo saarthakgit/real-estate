@@ -14,7 +14,7 @@ const banks = [
 
 export default function BrandMarquee() {
   return (
-    <div className="bg-black py-20 border-y border-white/5 overflow-hidden relative group font-primary">
+    <div className="bg-black pt-10 border-y border-white/5 overflow-hidden relative group font-primary ">
       {/* 1. Refined Subtitle */}
       <div className="flex justify-center mb-12">
         <p className="px-6 py-1.5 border border-white/10 rounded-full text-[10px] tracking-[0.5em] uppercase text-gray-500 bg-white/5 backdrop-blur-md">
@@ -43,8 +43,11 @@ export default function BrandMarquee() {
       </div>
 
       {/* 3. Luxury Fades (Increased width for 60% scale) */}
-      <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-64 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none" />
+     {/* Left Vignette: Wide on Mobile (80vw), Standard on Desktop (w-64) */}
+<div className="absolute inset-y-0 left-0 w-[10vw] md:w-64 bg-gradient-to-r from-black via-black/80 to-transparent z-10 pointer-events-none" />
+
+{/* Right Vignette: Same Logic */}
+<div className="absolute inset-y-0 right-0 w-[10vw] md:w-64 bg-gradient-to-l from-black via-black/80 to-transparent z-10 pointer-events-none" />
     </div>
   );
 }

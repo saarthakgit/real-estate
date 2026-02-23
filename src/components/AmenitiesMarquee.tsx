@@ -11,7 +11,7 @@ export default function AmenitiesMarquee() {
     <section id="amenities" className="bg-black py-24 overflow-hidden relative font-primary">
       {/* 1. Section Header */}
       <div className="container mx-auto px-6 mb-16">
-        <h2 className="text-yellow-500 text-[10px] tracking-[0.6em] uppercase font-semibold mb-3">
+        <h2 className="text-yellow-500 text-[10px] tracking-[0.3em] uppercase font-semibold mb-3">
           World-Class Lifestyle
         </h2>
         <h3 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tighter">

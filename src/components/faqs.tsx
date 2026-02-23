@@ -37,13 +37,13 @@ export default function FinalInfoSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section id="location" className="bg-black py-20 px-4 font-primary">
+    <section id="location" className="bg-black py-8 px-4 font-primary">
       <div className="max-w-[1100px] mx-auto">
         
         {/* 1. LOCATION GRID */}
         <div className="mb-32">
           <div className="text-center mb-16">
-            <h3 className="text-yellow-500 text-[10px] tracking-[0.6em] uppercase font-bold mb-4">Strategic Proximity</h3>
+            <h3 className="text-yellow-500 text-[10px] tracking-[0.3em] uppercase font-bold mb-4">Strategic Proximity</h3>
             <h4 className="text-4xl md:text-6xl font-black text-white uppercase tracking-tighter">Zero <span className="text-gray-600 font-extralight italic">Distractions</span></h4>
           </div>
           
@@ -53,8 +53,8 @@ export default function FinalInfoSection() {
                 <span className="block text-3xl font-black text-white tracking-tighter mb-1 group-hover:text-yellow-500 transition-colors">
                   {loc.time}<span className="text-sm font-light ml-1">Mins</span>
                 </span>
-                <p className="text-white text-[10px] uppercase tracking-widest font-bold mb-1">{loc.label}</p>
-                <p className="text-gray-600 text-[8px] uppercase tracking-tighter">{loc.sub}</p>
+                <p className="text-white text-[12px] uppercase tracking-widest font-bold mb-1">{loc.label}</p>
+                <p className="text-gray-600 text-[10px] uppercase tracking-tighter">{loc.sub}</p>
               </div>
             ))}
           </div>
