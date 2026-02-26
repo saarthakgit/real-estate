@@ -9,10 +9,12 @@ import FloorPlanSection from "../components/Layout";
 import PaymentSection from "../components/pp";
 import FinalInfoSection from "../components/faqs";
 import Footer from "../components/footer";
+import PromoBar from "../components/promobar";
 export default function Home() {
   return(
     <div>
       <Navbar/>
+      {/* <PromoBar/> */}
       <Hero/>
       {/* <LeadForm/> */}
       <BrandMarquee/>

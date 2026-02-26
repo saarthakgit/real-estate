@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from 'next/font/local';
 import "./globals.css";
+import PromoBar from "../components/promobar";
 
 // Configure all weights under a single font family
 const zalandoSans = localFont({
@@ -54,11 +55,14 @@ export const metadata: Metadata = {
   // 1. Base URL for resolving all relative image links (Fixes the "localhost" warning)
   metadataBase: new URL('https://platinumirish.in'), 
 
+    alternates: {
+    canonical: '/',
+  },
   // 2. Precise Title for High-Intent Search
-  title: "Irish Platinum Sector 10 | Luxury 3 & 4 BHK in Greater Noida West",
+  title: "Irish Platinum | Save ₹25.5 Lacs* | Luxury 3/4 BHK in Sector 10, Greater Noida West",
   
   // 3. AI-Snippet Optimized Description
-  description: "Official project details for Irish Platinum, Sector 10. Low-density 3 BHK & 4 BHK apartments in Greater Noida West. Mivan construction, 5 mins from Metro, & RERA approved (UPRERAPRJ503189). Starting ₹1.63 Cr*.",
+  description: "Save up to ₹25.5 Lacs*. Official project details for Irish Platinum, Sector 10. Download Official brochure , Floor Plans and Payment Plans , Direct Booking. Low-density 3 BHK & 4 BHK apartments in Greater Noida West. Mivan construction, 5 mins from Metro, & RERA approved (UPRERAPRJ503189). Starting ₹1.63 Cr*.",
   
   // 4. Cleaned & De-duplicated Keywords
   keywords: [
@@ -145,6 +149,7 @@ export default function RootLayout({
 `}</style>
       </head>
       <body className={`${zalandoSans.variable} antialiased`}>
+        <PromoBar/>
         {/* ENHANCED JSON-LD SCHEMA FOR AI SEARCH */}
         <script
           type="application/ld+json"
