@@ -94,7 +94,7 @@ export const metadata: Metadata = {
 
   // 5. Open Graph (WhatsApp/Telegram/LinkedIn)
   openGraph: {
-    title: "Irish Platinum | The Treasure Chest of Living",
+    title: "Irish Platinum | Save ₹25.5 Lacs*",
     description: "Premium 3/4 BHK residences in Sector 10. Mivan Tech & Low Density. Download Price List.",
     url: "https://platinumirish.in", 
     siteName: "Irish Platinum",
@@ -113,8 +113,8 @@ export const metadata: Metadata = {
   // 6. Twitter Card (X) - Consolidated and Fixed
   twitter: {
     card: "summary_large_image",
-    title: "Irish Platinum | 3 & 4 BHK Luxury",
-    description: "Low density, Mivan construction, 5 mins from Metro. Check availability now.",
+    title: "Irish Platinum | Save ₹25.5 Lacs*",
+    description: "Low density, Mivan construction, 5 mins from Metro. Download Brochure now.",
     creator: "@heyisomer", // Credits you
     images: ["/og-image.png"], // Shows the building (High CTR), not a profile pic
   },
