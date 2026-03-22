@@ -148,7 +148,7 @@ export default function LeadForm({ preSelect = "" }: { preSelect?: string }) {
                       <Loader2 className="animate-spin w-5 h-5" /> Sending...
                     </>
                   ) : (
-                    'Get Instant Call Back'
+                    'I am Interested'
                   )}
                 </button>
 

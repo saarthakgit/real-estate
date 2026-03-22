@@ -1,6 +1,7 @@
 'use client';
 import LeadForm from './LeadForm';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function Hero() {
   return (
@@ -9,21 +10,38 @@ export default function Hero() {
     <section className="relative w-full min-h-[100dvh] flex flex-col justify-center overflow-hidden bg-black font-primary pb-24 lg:pb-0 pt-20">
       
       {/* 2. Optimized Video Background (Fixed duplication) */}
-      <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          poster="/image.png"
-          playsInline 
-          preload="auto"
-          className="w-full h-full object-cover opacity-50 transition-opacity duration-1000"
-        >
-          <source src="/video1.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
-      </div>
+<div className="absolute inset-0 z-0 bg-black">
+  
+  {/* NEW: A single wrapper that applies 50% opacity to whatever is visible inside it */}
+  <div className="absolute inset-0 opacity-50">
+    
+    {/* 1. The LCP Image (Removed opacity-50 from here) */}
+    <Image 
+      src="/image.png" 
+      alt="Irish Platinum Hero" 
+      fill 
+      priority 
+      className="object-cover" 
+    />
+
+    {/* 2. The Video Layer (Removed opacity-50 from here too) */}
+    <video 
+      autoPlay 
+      loop 
+      muted 
+      playsInline 
+      preload="auto"
+      className="absolute inset-0 w-full h-full object-cover transition-opacity duration-1000"
+    >
+      <source src="/video1.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    
+  </div>
+  
+  {/* 3. Your gradient overlay stays untouched */}
+  <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-transparent to-black" />
+</div>
 
       {/* 3. Main Content Container - Using flex-1 to distribute vertical space */}
       <div className="relative z-10 w-full px-6 flex-1 flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-10 lg:gap-24 container mx-auto">

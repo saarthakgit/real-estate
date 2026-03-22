@@ -28,15 +28,21 @@ export default function BrandMarquee() {
           <div key={i} className="flex animate-scroll items-center gap-0">
             {banks.map((bank, index) => (
               <div 
-                key={`${i}-${index}`} 
-                className="mx-12 md:mx-20 flex items-center justify-center w-48 h-24 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out cursor-pointer"
-              >
-                <img 
-                  src={bank.src} 
-                  alt={bank.name} 
-                  className="max-w-full max-h-full object-contain filter invert brightness-200 contrast-75 hover:invert-0 hover:brightness-100 hover:contrast-100"
-                />
-              </div>
+  key={`${i}-${index}`} 
+  // 1. ADDED 'relative' so the Next.js Image knows its boundaries
+  className="relative mx-12 md:mx-20 flex items-center justify-center w-48 h-24 grayscale opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700 ease-in-out cursor-pointer"
+>
+  {/* 2. SWAPPED img for Image */}
+  <Image 
+    src={bank.src} 
+    alt={bank.name} 
+    fill
+    // 3. ADDED sizes. w-48 = 192px. This tells the server never to send an image larger than this.
+    sizes="192px" 
+    // 4. KEPT all your custom Tailwind filters exactly the same
+    className="object-contain filter invert brightness-200 contrast-75 hover:invert-0 hover:brightness-100 hover:contrast-100"
+  />
+</div>
             ))}
           </div>
         ))}

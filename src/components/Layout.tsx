@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import LeadForm from './LeadForm';
+import Image from 'next/image';
 
 const plans = [
   { id: "site", category: "Site Plan", title: "Site Layout", size: "Master Plan", img: "/plans/site-plan.png" },
@@ -63,12 +64,14 @@ export default function FloorPlanSection() {
               >
                 {/* IMAGE CONTAINER */}
                 <div className="aspect-square bg-neutral-800/50 relative border-b border-white/5">
-                   <img 
-                     src={plan.img} 
-                     alt={plan.title} 
-                     className="w-full h-full object-contain p-6 md:p-8 hover:scale-105 transition-transform duration-700" 
-                   />
-                </div>
+  <Image 
+    src={plan.img} 
+    alt={plan.title}
+    fill
+    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+    className="object-contain p-6 md:p-8 hover:scale-105 transition-transform duration-700" 
+  />
+</div>
                 
                 {/* Content Area */}
                 <div className="p-8 text-center">
