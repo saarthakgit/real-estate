@@ -72,7 +72,7 @@ export default function Hero() {
             <p className="mt-4 text-gray-300 text-[8px] md:text-xs lg:text-xs tracking-[0.2em] uppercase font-light leading-relaxed">
               Luxury 3 & 4 BHK Residences <br />
               Starting @ just <span className="text-yellow-500 font-black text-xl md:text-2xl lg:text-2xl tracking-normal drop-shadow-[0_0_15px_rgba(234,179,8,0.3)] mx-1">
-                ₹1.63 Cr*
+                ₹1.7 Cr*
               </span> in Noida Extension
             </p>
           </motion.div>
